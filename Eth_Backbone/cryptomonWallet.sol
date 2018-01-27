@@ -55,6 +55,16 @@ contract cryptomonWallet{
   assembly { size := extcodesize(addr) }
   return size > 0;
  }
-    
+
+ // @dev A mapping from owner address to count of tokens that address owns.
+ //  Used internally inside balanceOf() to resolve ownership count.
+ mapping (address => uint256) ownershipTokenCount;
+
+ /// @notice Returns the number of Mons owned by a specific address.
+ /// @param _owner The owner address to check.
+ /// @dev Required for ERC-721 compliance
+ function balanceOf(address _owner) public view returns (uint256 count) {
+ return ownershipTokenCount[_owner];
+ }
 
 }
