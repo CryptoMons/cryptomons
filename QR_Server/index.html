@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editing SVGs</title>
+
+</head>
+<body>
+    <div style="float:left;">
+    <h2>Check Your Cryptomon</h2>
+    <object id="hound2" data="nh2/nh2.svg" width="250px" height="250px"></object>
+    <br>
+    <input id="color" type="text" placeholder="Enter a new color (hex)" />
+    <button onclick="myClick()">Submit</button>
+    </div>
+    
+    <script src="game/phaser.min.js"></script>
+    <script src="game/game.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+    <script>
+		var more;
+		
+		function myClick() {
+			var x = document.getElementById("hound2").contentDocument;
+			more = x.getElementsByClassName("st0");
+			more1 = x.getElementsByClassName("st1");
+			more2 = x.getElementsByClassName("st2");
+			more3 = x.getElementsByClassName("st3");
+			var t = document.getElementById("color").value;
+			
+			for(var i=0; i<more.length;i++) {
+
+				more[i].style.fill = "#"+t.substring(2,8);		
+			}
+			for(var i=0; i<more1.length;i++) {
+
+				more1[i].style.fill = "#"+t.substring(8,14);		
+			}
+			for(var i=0; i<more2.length;i++) {
+
+				more2[i].style.fill = "#"+t.substring(14,20);		
+			}
+			for(var i=0; i<more3.length;i++) {
+
+				more3[i].style.fill = "#"+t.substring(20,26);		
+			}		
+		monObj = document.getElementById("hound2");
+		monObj.setAttribute("data","nh"+t[2]+"/nh"+t[2]+".svg");
+		}
+			
+		
+    </script>
+<body>
+</html>
